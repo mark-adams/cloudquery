@@ -1,0 +1,13 @@
+variables:
+  component: source/zoom
+
+project_name: plugins/source/zoom
+
+monorepo:
+  tag_prefix: plugins/source/zoom/
+  dir: plugins/source/zoom
+
+includes:
+  - from_file:
+      # Relative to the directory Go Releaser is run from (which is the root of the repository)
+      path: ./plugins/.goreleaser.yaml
