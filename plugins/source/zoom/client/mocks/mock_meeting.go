@@ -8,7 +8,7 @@ import (
 	reflect "reflect"
 
 	gomock "github.com/golang/mock/gomock"
-	zoom_lib_golang "github.com/zoom-lib-golang/zoom-lib-golang"
+	zoom "github.com/himalayan-institute/zoom-lib-golang"
 )
 
 // MockMeetingService is a mock of MeetingService interface.
@@ -35,10 +35,10 @@ func (m *MockMeetingService) EXPECT() *MockMeetingServiceMockRecorder {
 }
 
 // GetMeeting mocks base method.
-func (m *MockMeetingService) GetMeeting(arg0 zoom_lib_golang.GetMeetingOptions) (zoom_lib_golang.Meeting, error) {
+func (m *MockMeetingService) GetMeeting(arg0 zoom.GetMeetingOptions) (zoom.Meeting, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetMeeting", arg0)
-	ret0, _ := ret[0].(zoom_lib_golang.Meeting)
+	ret0, _ := ret[0].(zoom.Meeting)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
@@ -50,10 +50,10 @@ func (mr *MockMeetingServiceMockRecorder) GetMeeting(arg0 interface{}) *gomock.C
 }
 
 // ListMeetings mocks base method.
-func (m *MockMeetingService) ListMeetings(arg0 zoom_lib_golang.ListMeetingsOptions) (zoom_lib_golang.ListMeetingsResponse, error) {
+func (m *MockMeetingService) ListMeetings(arg0 zoom.ListMeetingsOptions) (zoom.ListMeetingsResponse, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "ListMeetings", arg0)
-	ret0, _ := ret[0].(zoom_lib_golang.ListMeetingsResponse)
+	ret0, _ := ret[0].(zoom.ListMeetingsResponse)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }

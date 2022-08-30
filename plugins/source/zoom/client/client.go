@@ -6,7 +6,6 @@ import (
 	"github.com/cloudquery/cq-provider-sdk/provider/diag"
 	"github.com/cloudquery/cq-provider-sdk/provider/schema"
 	"github.com/hashicorp/go-hclog"
-	"github.com/zoom-lib-golang/zoom-lib-golang"
 )
 
 type Client struct {
@@ -14,7 +13,7 @@ type Client struct {
 	// It will be passed for each resource fetcher.
 	logger hclog.Logger
 
-	Zoom *zoom.Client
+	ZoomServices
 }
 
 func (c *Client) Logger() hclog.Logger {
@@ -38,7 +37,7 @@ func Configure(logger hclog.Logger, config interface{}) (schema.ClientMeta, diag
 	// Init your client and 3rd party clients using the user's configuration
 	// passed by the SDK providerConfig
 	return &Client{
-		logger: logger,
-		Zoom:   client,
+		logger:       logger,
+		ZoomServices: client,
 	}, nil
 }

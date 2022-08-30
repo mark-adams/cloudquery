@@ -3,7 +3,7 @@ package client
 import (
 	"errors"
 
-	"github.com/zoom-lib-golang/zoom-lib-golang"
+	"github.com/himalayan-institute/zoom-lib-golang"
 )
 
 type Config struct {
