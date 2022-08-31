@@ -1,5 +1,3 @@
-# DONT EDIT. This file is synced from https://github.com/cloudquery/.github/misc/Makefile
-
 ## install the latest version of CQ
 .PHONY: install-cq
 install-cq:
