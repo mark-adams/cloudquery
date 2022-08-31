@@ -195,11 +195,7 @@ func Users() *schema.Table {
 func fetchMeetingUsers(ctx context.Context, meta schema.ClientMeta, parent *schema.Resource, res chan<- interface{}) error {
 	svc := meta.(*client.Client)
 
-	includeFields := []string{"custom_attributes"}
-	input := zoom.ListUsersOptions{
-		PageSize:      300,
-		IncludeFields: &includeFields,
-	}
+	input := zoom.ListUsersOptions{PageSize: 300}
 	for {
 		output, err := svc.ListUsers(input)
 		if err != nil {
