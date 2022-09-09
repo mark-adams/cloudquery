@@ -102,10 +102,9 @@ func SagemakerEndpointConfigurations() *schema.Table {
 						Type:        schema.TypeString,
 					},
 					{
-						Name:        "core_dump_config_destination_s3_uri",
-						Description: "The Amazon S3 bucket to send the core dump to. ",
-						Type:        schema.TypeString,
-						Resolver:    schema.PathResolver("CoreDumpConfig.DestinationS3Uri"),
+						Name:     "core_dump_config",
+						Type:     schema.TypeJSON,
+						Resolver: schema.PathResolver("CoreDumpConfig"),
 					},
 					{
 						Name:        "core_dump_config_kms_key_id",

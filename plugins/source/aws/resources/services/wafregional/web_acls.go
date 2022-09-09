@@ -36,10 +36,9 @@ func WebAcls() *schema.Table {
 				Resolver:    resolveWafregionalWebACLTags,
 			},
 			{
-				Name:        "default_action",
-				Description: "Specifies how you want AWS WAF to respond to requests that match the settings in a Rule",
-				Type:        schema.TypeString,
-				Resolver:    schema.PathResolver("DefaultAction.Type"),
+				Name:     "default_action",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("DefaultAction"),
 			},
 			{
 				Name:        "id",

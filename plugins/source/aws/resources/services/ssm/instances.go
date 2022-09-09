@@ -48,10 +48,9 @@ func SsmInstances() *schema.Table {
 				Type:        schema.TypeString,
 			},
 			{
-				Name:        "association_overview_detailed_status",
-				Description: "Detailed status information about the aggregated associations.",
-				Type:        schema.TypeString,
-				Resolver:    schema.PathResolver("AssociationOverview.DetailedStatus"),
+				Name:     "association_overview",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("AssociationOverview"),
 			},
 			{
 				Name:        "association_instance_status_aggregated_count",
@@ -170,16 +169,14 @@ func SsmInstances() *schema.Table {
 						Resolver:    schema.PathResolver("ExecutionSummary.ExecutionTime"),
 					},
 					{
-						Name:        "execution_summary_execution_id",
-						Description: "An ID created by the system when PutComplianceItems was called",
-						Type:        schema.TypeString,
-						Resolver:    schema.PathResolver("ExecutionSummary.ExecutionId"),
+						Name:     "execution_summary",
+						Type:     schema.TypeJSON,
+						Resolver: schema.PathResolver("ExecutionSummary"),
 					},
 					{
-						Name:        "execution_summary_execution_type",
-						Description: "The type of execution",
-						Type:        schema.TypeString,
-						Resolver:    schema.PathResolver("ExecutionSummary.ExecutionType"),
+						Name:     "execution_summary",
+						Type:     schema.TypeJSON,
+						Resolver: schema.PathResolver("ExecutionSummary"),
 					},
 					{
 						Name:        "id",

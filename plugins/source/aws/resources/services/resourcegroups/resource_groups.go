@@ -12,9 +12,9 @@ import (
 
 func ResourceGroups() *schema.Table {
 	return &schema.Table{
-		Name:         "aws_resourcegroups_resource_groups",
-		Resolver:     fetchResourcegroupsResourceGroups,
-		Multiplex:    client.ServiceAccountRegionMultiplexer("resource-groups"),
+		Name:      "aws_resourcegroups_resource_groups",
+		Resolver:  fetchResourcegroupsResourceGroups,
+		Multiplex: client.ServiceAccountRegionMultiplexer("resource-groups"),
 		Columns: []schema.Column{
 			{
 				Name:        "account_id",
@@ -34,35 +34,31 @@ func ResourceGroups() *schema.Table {
 				Resolver: resolveResourcegroupsResourceGroupTags,
 			},
 			{
-				Name:        "arn",
-				Description: "The ARN of the resource group",
-				Type:        schema.TypeString,
-				Resolver:    schema.PathResolver("Group.GroupArn"),
+				Name:            "arn",
+				Description:     "The ARN of the resource group",
+				Type:            schema.TypeString,
+				Resolver:        schema.PathResolver("Group.GroupArn"),
 				CreationOptions: schema.ColumnCreationOptions{PrimaryKey: true},
 			},
 			{
-				Name:        "group",
-				Description: "The name of the resource group",
-				Type:        schema.TypeString,
-				Resolver:    schema.PathResolver("Group.Name"),
+				Name:     "group",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("Group"),
 			},
 			{
-				Name:        "group_description",
-				Description: "The description of the resource group",
-				Type:        schema.TypeString,
-				Resolver:    schema.PathResolver("Group.Description"),
+				Name:     "group",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("Group"),
 			},
 			{
-				Name:        "resource_query",
-				Description: "The query that defines a group or a search",
-				Type:        schema.TypeString,
-				Resolver:    schema.PathResolver("ResourceQuery.Query"),
+				Name:     "resource_query",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("ResourceQuery"),
 			},
 			{
-				Name:        "resource_query_type",
-				Description: "The type of the query",
-				Type:        schema.TypeString,
-				Resolver:    schema.PathResolver("ResourceQuery.Type"),
+				Name:     "resource_query",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("ResourceQuery"),
 			},
 		},
 	}

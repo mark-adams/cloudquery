@@ -35,10 +35,10 @@ const fetchS3BucketsPoolSize = 10
 
 func Buckets() *schema.Table {
 	return &schema.Table{
-		Name:         "aws_s3_buckets",
-		Description:  "An Amazon S3 bucket is a public cloud storage resource available in Amazon Web Services' (AWS) Simple Storage Service (S3)",
-		Resolver:     fetchS3Buckets,
-		Multiplex:    client.AccountMultiplex,
+		Name:        "aws_s3_buckets",
+		Description: "An Amazon S3 bucket is a public cloud storage resource available in Amazon Web Services' (AWS) Simple Storage Service (S3)",
+		Resolver:    fetchS3Buckets,
+		Multiplex:   client.AccountMultiplex,
 		Columns: []schema.Column{
 			{
 				Name:        "account_id",
@@ -131,16 +131,16 @@ func Buckets() *schema.Table {
 			},
 			{
 				Name:        "replication_rules",
-				Description:   "Specifies which Amazon S3 objects to replicate and where to store the replicas.",
-				Type:          schema.TypeJSON,
+				Description: "Specifies which Amazon S3 objects to replicate and where to store the replicas.",
+				Type:        schema.TypeJSON,
 			},
 		},
 		Relations: []*schema.Table{
 			{
 				Name:        "aws_s3_bucket_grants",
 				Description: "Container for grant information.",
-				
-				Resolver:    fetchS3BucketGrants,
+
+				Resolver: fetchS3BucketGrants,
 				Columns: []schema.Column{
 					{
 						Name:        "bucket_cq_id",
@@ -149,35 +149,30 @@ func Buckets() *schema.Table {
 						Resolver:    schema.ParentIdResolver,
 					},
 					{
-						Name:        "type",
-						Description: "Type of grantee",
-						Type:        schema.TypeString,
-						Resolver:    schema.PathResolver("Grantee.Type"),
+						Name:     "grantee",
+						Type:     schema.TypeJSON,
+						Resolver: schema.PathResolver("Grantee"),
 					},
 					{
-						Name:        "display_name",
-						Description: "Screen name of the grantee.",
-						Type:        schema.TypeString,
-						Resolver:    schema.PathResolver("Grantee.DisplayName"),
+						Name:     "grantee",
+						Type:     schema.TypeJSON,
+						Resolver: schema.PathResolver("Grantee"),
 					},
 					{
-						Name:          "email_address",
-						Description:   "Email address of the grantee",
-						Type:          schema.TypeString,
-						Resolver:      schema.PathResolver("Grantee.EmailAddress"),
+						Name:          "grantee",
+						Type:          schema.TypeJSON,
+						Resolver:      schema.PathResolver("Grantee"),
 						IgnoreInTests: true,
 					},
 					{
-						Name:        "grantee_id",
-						Description: "The canonical user ID of the grantee.",
-						Type:        schema.TypeString,
-						Resolver:    schema.PathResolver("Grantee.ID"),
+						Name:     "grantee",
+						Type:     schema.TypeJSON,
+						Resolver: schema.PathResolver("Grantee"),
 					},
 					{
-						Name:          "uri",
-						Description:   "URI of the grantee group.",
-						Type:          schema.TypeString,
-						Resolver:      schema.PathResolver("Grantee.URI"),
+						Name:          "grantee",
+						Type:          schema.TypeJSON,
+						Resolver:      schema.PathResolver("Grantee"),
 						IgnoreInTests: true,
 					},
 					{
@@ -281,16 +276,14 @@ func Buckets() *schema.Table {
 						Type:        schema.TypeString,
 					},
 					{
-						Name:        "abort_incomplete_multipart_upload_days_after_initiation",
-						Description: "Specifies the number of days after which Amazon S3 aborts an incomplete multipart upload.",
-						Type:        schema.TypeInt,
-						Resolver:    schema.PathResolver("AbortIncompleteMultipartUpload.DaysAfterInitiation"),
+						Name:     "abort_incomplete_multipart_upload",
+						Type:     schema.TypeJSON,
+						Resolver: schema.PathResolver("AbortIncompleteMultipartUpload"),
 					},
 					{
-						Name:        "expiration_date",
-						Description: "Indicates at what date the object is to be moved or deleted",
-						Type:        schema.TypeTimestamp,
-						Resolver:    schema.PathResolver("Expiration.Date"),
+						Name:     "expiration",
+						Type:     schema.TypeJSON,
+						Resolver: schema.PathResolver("Expiration"),
 					},
 					{
 						Name:        "expiration_days",
@@ -299,10 +292,9 @@ func Buckets() *schema.Table {
 						Resolver:    schema.PathResolver("Expiration.Days"),
 					},
 					{
-						Name:        "expiration_expired_object_delete_marker",
-						Description: "Indicates whether Amazon S3 will remove a delete marker with no noncurrent versions",
-						Type:        schema.TypeBool,
-						Resolver:    schema.PathResolver("Expiration.ExpiredObjectDeleteMarker"),
+						Name:     "expiration",
+						Type:     schema.TypeJSON,
+						Resolver: schema.PathResolver("Expiration"),
 					},
 					{
 						Name:        "filter",
@@ -317,10 +309,9 @@ func Buckets() *schema.Table {
 						Resolver:    schema.PathResolver("ID"),
 					},
 					{
-						Name:        "noncurrent_version_expiration_days",
-						Description: "Specifies the number of days an object is noncurrent before Amazon S3 can perform the associated action",
-						Type:        schema.TypeInt,
-						Resolver:    schema.PathResolver("NoncurrentVersionExpiration.NoncurrentDays"),
+						Name:     "noncurrent_version_expiration",
+						Type:     schema.TypeJSON,
+						Resolver: schema.PathResolver("NoncurrentVersionExpiration"),
 					},
 					{
 						Name:        "noncurrent_version_transitions",

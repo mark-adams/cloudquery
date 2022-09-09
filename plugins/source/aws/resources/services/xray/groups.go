@@ -51,16 +51,14 @@ func Groups() *schema.Table {
 				Type:        schema.TypeString,
 			},
 			{
-				Name:        "insights_enabled",
-				Description: "Set the InsightsEnabled value to true to enable insights or false to disable insights",
-				Type:        schema.TypeBool,
-				Resolver:    schema.PathResolver("InsightsConfiguration.InsightsEnabled"),
+				Name:     "insights_configuration",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("InsightsConfiguration"),
 			},
 			{
-				Name:        "notifications_enabled",
-				Description: "Set the NotificationsEnabled value to true to enable insights notifications Notifications can only be enabled on a group with InsightsEnabled set to true",
-				Type:        schema.TypeBool,
-				Resolver:    schema.PathResolver("InsightsConfiguration.NotificationsEnabled"),
+				Name:     "insights_configuration",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("InsightsConfiguration"),
 			},
 		},
 	}

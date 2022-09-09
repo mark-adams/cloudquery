@@ -74,22 +74,19 @@ func Wafv2WebAcls() *schema.Table {
 				Type:        schema.TypeString,
 			},
 			{
-				Name:        "visibility_config_cloud_watch_metrics_enabled",
-				Description: "A boolean indicating whether the associated resource sends metrics to CloudWatch",
-				Type:        schema.TypeBool,
-				Resolver:    schema.PathResolver("VisibilityConfig.CloudWatchMetricsEnabled"),
+				Name:     "visibility_config",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("VisibilityConfig"),
 			},
 			{
-				Name:        "visibility_config_metric_name",
-				Description: "A name of the CloudWatch metric",
-				Type:        schema.TypeString,
-				Resolver:    schema.PathResolver("VisibilityConfig.MetricName"),
+				Name:     "visibility_config",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("VisibilityConfig"),
 			},
 			{
-				Name:        "visibility_config_sampled_requests_enabled",
-				Description: "A boolean indicating whether AWS WAF should store a sampling of the web requests that match the rules",
-				Type:        schema.TypeBool,
-				Resolver:    schema.PathResolver("VisibilityConfig.SampledRequestsEnabled"),
+				Name:     "visibility_config",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("VisibilityConfig"),
 			},
 			{
 				Name:        "capacity",
@@ -117,10 +114,9 @@ func Wafv2WebAcls() *schema.Table {
 				Type:        schema.TypeBool,
 			},
 			{
-				Name:        "logging_configuration",
-				Description: "The LoggingConfiguration for the specified web ACL.",
-				Type:        schema.TypeStringArray,
-				Resolver:    schema.PathResolver("LoggingConfiguration.LogDestinationConfigs"),
+				Name:     "logging_configuration",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("LoggingConfiguration"),
 			},
 			{
 				Name:        "rules",
@@ -129,16 +125,16 @@ func Wafv2WebAcls() *schema.Table {
 				Resolver:    schema.PathResolver("Rules"),
 			},
 			{
-				Name:        "post_process_firewall_manager_rule_groups",
-				Type: 			schema.TypeJSON,
+				Name: "post_process_firewall_manager_rule_groups",
+				Type: schema.TypeJSON,
 			},
 			{
-				Name:        "pre_process_firewall_manager_rule_groups",
-				Type: 			schema.TypeJSON,
+				Name: "pre_process_firewall_manager_rule_groups",
+				Type: schema.TypeJSON,
 			},
 			{
-				Name:       "logging_configuration",
-				Type: 			schema.TypeJSON,
+				Name: "logging_configuration",
+				Type: schema.TypeJSON,
 			},
 		},
 	}

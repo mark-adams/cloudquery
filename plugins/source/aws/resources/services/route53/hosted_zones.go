@@ -21,10 +21,10 @@ type Route53HostedZoneWrapper struct {
 
 func Route53HostedZones() *schema.Table {
 	return &schema.Table{
-		Name:         "aws_route53_hosted_zones",
-		Description:  "A complex type that contains general information about the hosted zone.",
-		Resolver:     fetchRoute53HostedZones,
-		Multiplex:    client.AccountMultiplex,
+		Name:        "aws_route53_hosted_zones",
+		Description: "A complex type that contains general information about the hosted zone.",
+		Resolver:    fetchRoute53HostedZones,
+		Multiplex:   client.AccountMultiplex,
 		Columns: []schema.Column{
 			{
 				Name:        "account_id",
@@ -66,29 +66,25 @@ func Route53HostedZones() *schema.Table {
 				Type:        schema.TypeString,
 			},
 			{
-				Name:        "config_comment",
-				Description: "Any comments that you want to include about the hosted zone.",
-				Type:        schema.TypeString,
-				Resolver:    schema.PathResolver("Config.Comment"),
+				Name:     "config",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("Config"),
 			},
 			{
-				Name:        "config_private_zone",
-				Description: "A value that indicates whether this is a private hosted zone.",
-				Type:        schema.TypeBool,
-				Resolver:    schema.PathResolver("Config.PrivateZone"),
+				Name:     "config",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("Config"),
 			},
 			{
-				Name:          "linked_service_description",
-				Description:   "If the health check or hosted zone was created by another service, an optional description that can be provided by the other service.",
-				Type:          schema.TypeString,
-				Resolver:      schema.PathResolver("LinkedService.Description"),
+				Name:          "linked_service",
+				Type:          schema.TypeJSON,
+				Resolver:      schema.PathResolver("LinkedService"),
 				IgnoreInTests: true,
 			},
 			{
-				Name:          "linked_service_principal",
-				Description:   "If the health check or hosted zone was created by another service, the service that created the resource.",
-				Type:          schema.TypeString,
-				Resolver:      schema.PathResolver("LinkedService.ServicePrincipal"),
+				Name:          "linked_service",
+				Type:          schema.TypeJSON,
+				Resolver:      schema.PathResolver("LinkedService"),
 				IgnoreInTests: true,
 			},
 			{
@@ -168,10 +164,9 @@ func Route53HostedZones() *schema.Table {
 						IgnoreInTests: true,
 					},
 					{
-						Name:        "evaluate_target_health",
-						Description: "Applies only to alias, failover alias, geolocation alias, latency alias, and weighted alias resource record sets: When EvaluateTargetHealth is true, an alias resource record set inherits the health of the referenced AWS resource, such as an ELB load balancer or another resource record set in the hosted zone.",
-						Type:        schema.TypeBool,
-						Resolver:    schema.PathResolver("AliasTarget.EvaluateTargetHealth"),
+						Name:     "alias_target",
+						Type:     schema.TypeJSON,
+						Resolver: schema.PathResolver("AliasTarget"),
 					},
 					{
 						Name:        "failover",
@@ -439,7 +434,6 @@ func fetchRoute53HostedZoneTrafficPolicyInstances(ctx context.Context, meta sche
 	}
 	return nil
 }
-
 
 func getRoute53tagsByResourceID(id string, set []types.ResourceTagSet) []types.Tag {
 	for _, s := range set {

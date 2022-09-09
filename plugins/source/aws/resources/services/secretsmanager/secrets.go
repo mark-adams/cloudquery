@@ -118,10 +118,9 @@ func SecretsmanagerSecrets() *schema.Table {
 				Resolver:    schema.PathResolver("RotationLambdaARN"),
 			},
 			{
-				Name:        "rotation_rules_automatically_after_days",
-				Description: "Specifies the number of days between automatic scheduled rotations of the secret",
-				Type:        schema.TypeInt,
-				Resolver:    schema.PathResolver("RotationRules.AutomaticallyAfterDays"),
+				Name:     "rotation_rules",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("RotationRules"),
 			},
 			{
 				Name:        "secret_versions_to_stages",

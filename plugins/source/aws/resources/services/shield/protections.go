@@ -37,10 +37,9 @@ func Protections() *schema.Table {
 				Resolver:    ResolveShieldProtectionTags,
 			},
 			{
-				Name:        "application_automatic_response_configuration_status",
-				Description: "Indicates whether automatic application layer DDoS mitigation is enabled for the protection",
-				Type:        schema.TypeString,
-				Resolver:    schema.PathResolver("ApplicationLayerAutomaticResponseConfiguration.Status"),
+				Name:     "application_layer_automatic_response_configuration",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("ApplicationLayerAutomaticResponseConfiguration"),
 			},
 			{
 				Name:        "health_check_ids",

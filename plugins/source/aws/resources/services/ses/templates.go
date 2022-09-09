@@ -9,19 +9,18 @@ import (
 	"github.com/cloudquery/plugin-sdk/schema"
 )
 
-
 func Templates() *schema.Table {
 	return &schema.Table{
-		Name:         "aws_ses_templates",
-		Description:  "Amazon Simple Email Service (SES) is a cost-effective, flexible, and scalable email service that enables developers to send mail from within any application.",
-		Resolver:     fetchSesTemplates,
-		Multiplex:    client.ServiceAccountRegionMultiplexer("email"),
+		Name:        "aws_ses_templates",
+		Description: "Amazon Simple Email Service (SES) is a cost-effective, flexible, and scalable email service that enables developers to send mail from within any application.",
+		Resolver:    fetchSesTemplates,
+		Multiplex:   client.ServiceAccountRegionMultiplexer("email"),
 		Columns: []schema.Column{
 			{
-				Name:        "arn",
-				Description: "The Amazon Resource Name (ARN) for the resource.",
-				Type:        schema.TypeString,
-				Resolver:    ResolveSesTemplateArn,
+				Name:            "arn",
+				Description:     "The Amazon Resource Name (ARN) for the resource.",
+				Type:            schema.TypeString,
+				Resolver:        ResolveSesTemplateArn,
 				CreationOptions: schema.ColumnCreationOptions{PrimaryKey: true},
 			},
 			{
@@ -43,22 +42,19 @@ func Templates() *schema.Table {
 				Resolver:    schema.PathResolver("TemplateName"),
 			},
 			{
-				Name:        "html",
-				Description: "The HTML body of the email.",
-				Type:        schema.TypeString,
-				Resolver:    schema.PathResolver("EmailTemplateContent.Html"),
+				Name:     "email_template_content",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("EmailTemplateContent"),
 			},
 			{
-				Name:        "subject",
-				Description: "The subject line of the email.",
-				Type:        schema.TypeString,
-				Resolver:    schema.PathResolver("EmailTemplateContent.Subject"),
+				Name:     "email_template_content",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("EmailTemplateContent"),
 			},
 			{
-				Name:        "text",
-				Description: "The email body that will be visible to recipients whose email clients do not display HTML.",
-				Type:        schema.TypeString,
-				Resolver:    schema.PathResolver("EmailTemplateContent.Text"),
+				Name:     "email_template_content",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("EmailTemplateContent"),
 			},
 			{
 				Name:        "created_timestamp",

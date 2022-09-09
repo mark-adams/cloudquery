@@ -10,13 +10,12 @@ import (
 	"github.com/cloudquery/plugin-sdk/schema"
 )
 
-
 func Workspaces() *schema.Table {
 	return &schema.Table{
-		Name:         "aws_workspaces_workspaces",
-		Description:  "Describes a WorkSpace.",
-		Resolver:     fetchWorkspacesWorkspaces,
-		Multiplex:    client.ServiceAccountRegionMultiplexer("workspaces"),
+		Name:        "aws_workspaces_workspaces",
+		Description: "Describes a WorkSpace.",
+		Resolver:    fetchWorkspacesWorkspaces,
+		Multiplex:   client.ServiceAccountRegionMultiplexer("workspaces"),
 		Columns: []schema.Column{
 			{
 				Name:        "account_id",
@@ -117,22 +116,19 @@ func Workspaces() *schema.Table {
 				Resolver:    schema.PathResolver("WorkspaceId"),
 			},
 			{
-				Name:        "compute_type_name",
-				Description: "The compute type",
-				Type:        schema.TypeString,
-				Resolver:    schema.PathResolver("WorkspaceProperties.ComputeTypeName"),
+				Name:     "workspace_properties",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("WorkspaceProperties"),
 			},
 			{
-				Name:        "root_volume_size_gib",
-				Description: "The size of the root volume",
-				Type:        schema.TypeInt,
-				Resolver:    schema.PathResolver("WorkspaceProperties.RootVolumeSizeGib"),
+				Name:     "workspace_properties",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("WorkspaceProperties"),
 			},
 			{
-				Name:        "running_mode",
-				Description: "The running mode",
-				Type:        schema.TypeString,
-				Resolver:    schema.PathResolver("WorkspaceProperties.RunningMode"),
+				Name:     "workspace_properties",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("WorkspaceProperties"),
 			},
 			{
 				Name:        "running_mode_auto_stop_timeout_in_minutes",
@@ -141,10 +137,9 @@ func Workspaces() *schema.Table {
 				Resolver:    schema.PathResolver("WorkspaceProperties.RunningModeAutoStopTimeoutInMinutes"),
 			},
 			{
-				Name:        "user_volume_size_gib",
-				Description: "The size of the user storage",
-				Type:        schema.TypeInt,
-				Resolver:    schema.PathResolver("WorkspaceProperties.UserVolumeSizeGib"),
+				Name:     "workspace_properties",
+				Type:     schema.TypeJSON,
+				Resolver: schema.PathResolver("WorkspaceProperties"),
 			},
 		},
 	}
