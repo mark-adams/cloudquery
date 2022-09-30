@@ -84,7 +84,7 @@ func syncConnection(ctx context.Context, sourceSpec specs.Source, destinationsSp
 	defer func() {
 		for _, destClient := range destClients {
 			if destClient != nil {
-				if err := destClient.Close(); err != nil {
+				if err := destClient.Close(ctx); err != nil {
 					fmt.Println("failed to close destination client: ", err)
 				}
 			}
@@ -164,6 +164,15 @@ func syncConnection(ctx context.Context, sourceSpec specs.Source, destinationsSp
 		_ = bar.Finish()
 		return fmt.Errorf("failed to fetch resources: %w", err)
 	}
+
+	for i, destination := range sourceSpec.Destinations {
+		log.Info().Str("destination", destination).Msg("Closing destination")
+		err := destClients[i].Close(ctx)
+		if err != nil {
+			return fmt.Errorf("failed to close %v: %w", destination, err)
+		}
+	}
+
 	_ = bar.Finish()
 	fmt.Println("Sync completed successfully.")
 	fmt.Printf("Summary: Resources: %d\n", totalResources)
