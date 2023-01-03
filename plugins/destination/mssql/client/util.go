@@ -4,11 +4,12 @@ import (
 	"strings"
 )
 
-func sanitizeIdentifier(identifier string) string {
-	identifier = strings.ReplaceAll(identifier, string([]byte{0}), "")
+func sanitizeIdentifier(parts ...string) string {
+	res := make([]string, 0, len(parts))
 
-	if strings.HasPrefix(identifier, `[`) && strings.HasSuffix(identifier, `]`) {
-		return identifier
+	for _, part := range parts {
+		res = append(res, `[`+strings.ReplaceAll(part, string([]byte{0}), "")+`]`)
 	}
-	return `[` + identifier + `]`
+
+	return strings.Join(parts, ".")
 }

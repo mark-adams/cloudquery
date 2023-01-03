@@ -41,7 +41,8 @@ func (c *Client) Read(ctx context.Context, table *schema.Table, sourceName strin
 	}
 	for rows.NextResultSet() {
 		for rows.Next() {
-			row := scanArray(len(cols))
+			row := make([]any, len(cols))
+			//row := scanArray(len(cols))
 			if err := rows.Scan(row...); err != nil {
 				return err
 			}
@@ -54,19 +55,10 @@ func (c *Client) Read(ctx context.Context, table *schema.Table, sourceName strin
 	return tx.Commit()
 }
 
-type scanner struct {
-	v any
-}
-
-func (s *scanner) Scan(a any) error {
-	s.v = a
-	return nil
-}
-
 func scanArray(l int) []any {
 	res := make([]any, 0, l)
 	for i := 0; i < l; i++ {
-		res = append(res, new(scanner))
+		res = append(res, new(any))
 	}
 	return res
 }
@@ -74,7 +66,7 @@ func scanArray(l int) []any {
 func extractScanned(scanned []any) []any {
 	res := make([]any, len(scanned))
 	for i, s := range scanned {
-		res[i] = s.(*scanner).v
+		res[i] = *s.(*any)
 	}
 	return res
 }
