@@ -5,6 +5,22 @@ All notable changes to this provider will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.5.0](https://github.com/cloudquery/cloudquery/compare/plugins-source-gcp-v5.4.0...plugins-source-gcp-v5.5.0) (2023-01-04)
+
+
+### Features
+
+* **gcp-resources:** Add Bigtable admin resources ([#6250](https://github.com/cloudquery/cloudquery/issues/6250)) ([3fedb35](https://github.com/cloudquery/cloudquery/commit/3fedb359492e2cec1d9e9347643f256bdaef2e5b))
+* **gcp-resources:** Add Billing Budgets ([#6251](https://github.com/cloudquery/cloudquery/issues/6251)) ([8327d51](https://github.com/cloudquery/cloudquery/commit/8327d510634b0b8b335e330ee902ae71825aa4a7))
+* **gcp-resources:** Add Cloud Deploy ([#6321](https://github.com/cloudquery/cloudquery/issues/6321)) ([154d1e9](https://github.com/cloudquery/cloudquery/commit/154d1e966d1a6b5fdca056d8835a8141b3f5e662))
+* **gcp-resources:** Add Error Reporting ([#6326](https://github.com/cloudquery/cloudquery/issues/6326)) ([1fae862](https://github.com/cloudquery/cloudquery/commit/1fae8624c0ba1b40cb5ef19884bfb9f41e06e124))
+
+
+### Bug Fixes
+
+* **deps:** Update module github.com/cloudquery/plugin-sdk to v1.17.2 ([#6260](https://github.com/cloudquery/cloudquery/issues/6260)) ([805972a](https://github.com/cloudquery/cloudquery/commit/805972aa67ce54e3358501c6b7ee5d85e5f65cac))
+* **deps:** Update module github.com/cloudquery/plugin-sdk to v1.18.0 ([#6339](https://github.com/cloudquery/cloudquery/issues/6339)) ([158365a](https://github.com/cloudquery/cloudquery/commit/158365a78dfa4389074f716a0f581f18fedc1080))
+
 ## [5.4.0](https://github.com/cloudquery/cloudquery/compare/plugins-source-gcp-v5.3.1...plugins-source-gcp-v5.4.0) (2023-01-03)
 
 
