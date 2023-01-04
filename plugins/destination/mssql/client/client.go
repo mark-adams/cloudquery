@@ -29,7 +29,7 @@ func (c *Client) Close(context.Context) error {
 
 var _ destination.Client = (*Client)(nil)
 
-func New(ctx context.Context, logger zerolog.Logger, spec specs.Destination) (destination.Client, error) {
+func New(_ context.Context, logger zerolog.Logger, spec specs.Destination) (destination.Client, error) {
 	var pluginSpec Spec
 	if err := spec.UnmarshalSpec(&pluginSpec); err != nil {
 		return nil, fmt.Errorf("failed to unmarshal spec: %w", err)
