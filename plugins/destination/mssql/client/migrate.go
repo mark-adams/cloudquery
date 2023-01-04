@@ -50,7 +50,3 @@ func (c *Client) tableExists(ctx context.Context, table string) (bool, error) {
 func (c *Client) autoMigrateTable(ctx context.Context, table *schema.Table) error {
 	panic("implement")
 }
-
-func (c *Client) createTableIfNotExist(ctx context.Context, table *schema.Table) error {
-	panic("implement")
-}
