@@ -39,6 +39,8 @@ func (c *Client) Read(ctx context.Context, table *schema.Table, sourceName strin
 	if err != nil {
 		return err
 	}
+
+	// We consider only the current schema from table.
 	for rows.NextResultSet() {
 		for rows.Next() {
 			row := make([]any, len(cols))
