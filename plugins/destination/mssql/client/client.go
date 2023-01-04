@@ -13,11 +13,11 @@ import (
 type Client struct {
 	db *sql.DB
 
-	batchSize int
-
 	metrics destination.Metrics
 
 	logger zerolog.Logger
+
+	spec specs.Destination
 
 	destination.UnimplementedUnmanagedWriter
 	*destination.DefaultReverseTransformer
@@ -41,8 +41,8 @@ func New(ctx context.Context, logger zerolog.Logger, spec specs.Destination) (de
 	}
 
 	return &Client{
-		db:        sql.OpenDB(connector),
-		logger:    logger.With().Str("module", "dest-mssql").Logger(),
-		batchSize: spec.BatchSize,
+		db:     sql.OpenDB(connector),
+		logger: logger.With().Str("module", "dest-mssql").Logger(),
+		spec:   spec,
 	}, nil
 }
