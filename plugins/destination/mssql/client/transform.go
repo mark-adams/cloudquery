@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/cloudquery/plugin-sdk/schema"
+	mssql "github.com/microsoft/go-mssqldb"
 )
 
 func (*Client) TransformBool(v *schema.Bool) any     { return v.Bool }
@@ -33,6 +34,17 @@ func (*Client) TransformJSON(v *schema.JSON) any {
 	return string(v.Bytes)
 }
 
+func (*Client) TransformUUID(v *schema.UUID) any {
+	return mssql.UniqueIdentifier(v.Bytes).String()
+}
+func (*Client) TransformUUIDArray(v *schema.UUIDArray) any {
+	res := make([]string, len(v.Elements))
+	for i, e := range v.Elements {
+		res[i] = mssql.UniqueIdentifier(e.Bytes).String()
+	}
+	return res
+}
+
 func transformStringer(v fmt.Stringer) any {
 	return v.String()
 }
@@ -55,5 +67,3 @@ func (*Client) TransformMacaddrArray(v *schema.MacaddrArray) any {
 }
 func (*Client) TransformText(v *schema.Text) any           { return transformStringer(v) }
 func (*Client) TransformTextArray(v *schema.TextArray) any { return transformStringerArray(v.Elements) }
-func (*Client) TransformUUID(v *schema.UUID) any           { return transformStringer(v) }
-func (*Client) TransformUUIDArray(v *schema.UUIDArray) any { return transformStringerArray(v.Elements) }
