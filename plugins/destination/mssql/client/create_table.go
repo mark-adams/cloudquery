@@ -9,6 +9,8 @@ import (
 )
 
 func (c *Client) createTableIfNotExist(ctx context.Context, table *schema.Table) error {
+	c.logger.Debug().Str("table", table.Name).Msg("Table doesn't exist, creating")
+
 	var sb strings.Builder
 	sb.WriteString("CREATE TABLE IF NOT EXISTS ")
 	sb.WriteString(sanitizeIdentifier(table.Name))
