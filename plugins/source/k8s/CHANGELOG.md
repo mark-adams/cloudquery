@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.5.5](https://github.com/cloudquery/cloudquery/compare/plugins-source-k8s-v2.5.4...plugins-source-k8s-v2.5.5) (2023-01-04)
+
+
+### Bug Fixes
+
+* **deps:** Update module github.com/cloudquery/plugin-sdk to v1.17.2 ([#6260](https://github.com/cloudquery/cloudquery/issues/6260)) ([805972a](https://github.com/cloudquery/cloudquery/commit/805972aa67ce54e3358501c6b7ee5d85e5f65cac))
+* **deps:** Update module github.com/cloudquery/plugin-sdk to v1.18.0 ([#6339](https://github.com/cloudquery/cloudquery/issues/6339)) ([158365a](https://github.com/cloudquery/cloudquery/commit/158365a78dfa4389074f716a0f581f18fedc1080))
+
 ## [2.5.4](https://github.com/cloudquery/cloudquery/compare/plugins-source-k8s-v2.5.3...plugins-source-k8s-v2.5.4) (2023-01-03)
 
 
