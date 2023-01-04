@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.0.3](https://github.com/cloudquery/cloudquery/compare/plugins-destination-gcs-v1.0.2...plugins-destination-gcs-v1.0.3) (2023-01-04)
+
+
+### Bug Fixes
+
+* **deps:** Update module github.com/cloudquery/filetypes to v1.0.2 ([#6340](https://github.com/cloudquery/cloudquery/issues/6340)) ([d0d867b](https://github.com/cloudquery/cloudquery/commit/d0d867b0cd6c8b2968133d62e99b3abc498e9a17))
+* **deps:** Update module github.com/cloudquery/plugin-sdk to v1.18.0 ([#6339](https://github.com/cloudquery/cloudquery/issues/6339)) ([158365a](https://github.com/cloudquery/cloudquery/commit/158365a78dfa4389074f716a0f581f18fedc1080))
+* Return error if read is called when `no_rotate` is false ([#6263](https://github.com/cloudquery/cloudquery/issues/6263)) ([c475be7](https://github.com/cloudquery/cloudquery/commit/c475be71b66c63761dabdecb1f99b65f94e77549))
+
 ## [1.0.2](https://github.com/cloudquery/cloudquery/compare/plugins-destination-gcs-v1.0.1...plugins-destination-gcs-v1.0.2) (2023-01-03)
 
 
