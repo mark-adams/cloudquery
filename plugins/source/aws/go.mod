@@ -98,7 +98,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/xray v1.15.3
 	github.com/aws/smithy-go v1.13.5
 	github.com/basgys/goxml2json v1.1.0
-	github.com/cloudquery/plugin-sdk v1.17.2
+	github.com/cloudquery/plugin-sdk v1.18.0
 	github.com/gocarina/gocsv v0.0.0-20221216233619-1fea7ae8d380
 	github.com/golang/mock v1.6.0
 	github.com/google/go-cmp v0.5.9
@@ -108,8 +108,6 @@ require (
 	github.com/thoas/go-funk v0.9.3
 	golang.org/x/sync v0.1.0
 )
-
-replace github.com/cloudquery/plugin-sdk => ../../../../plugin-sdk-split
 
 require (
 	github.com/aws/aws-sdk-go-v2/internal/v4a v1.0.18 // indirect
@@ -147,7 +145,6 @@ require (
 	github.com/ghodss/yaml v1.0.0 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/google/uuid v1.3.0 // indirect
-	github.com/iancoleman/strcase v0.2.0
 	github.com/jmespath/go-jmespath v0.4.0 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.17 // indirect
