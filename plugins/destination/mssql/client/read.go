@@ -35,15 +35,10 @@ func (c *Client) Read(ctx context.Context, table *schema.Table, sourceName strin
 		return err
 	}
 
-	cols, err := rows.Columns()
-	if err != nil {
-		return err
-	}
-
-	// We consider only the current schema from table.
 	for rows.NextResultSet() {
 		for rows.Next() {
-			row := make([]any, len(cols))
+			// We consider only the current schema from table
+			row := make([]any, len(table.Columns))
 			//row := scanArray(len(cols))
 			if err := rows.Scan(row...); err != nil {
 				return err
@@ -51,9 +46,10 @@ func (c *Client) Read(ctx context.Context, table *schema.Table, sourceName strin
 			res <- extractScanned(row)
 		}
 	}
-	if err := rows.Close(); err != nil {
+	if err := rows.Err(); err != nil {
 		return err
 	}
+
 	return tx.Commit()
 }
 

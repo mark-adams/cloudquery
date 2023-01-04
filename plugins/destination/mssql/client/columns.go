@@ -1,6 +1,10 @@
 package client
 
 import (
+	"context"
+	"database/sql"
+	"strings"
+
 	"github.com/cloudquery/plugin-sdk/schema"
 	"github.com/cloudquery/plugin-sdk/specs"
 )
@@ -37,4 +41,47 @@ func (c *Client) getColumnDefinitions(columns schema.ColumnList) []string {
 		definitions[i] = fieldDef
 	}
 	return definitions
+}
+
+type (
+	msSQLTableInfo struct {
+		name    string
+		columns []msSQLColumn
+	}
+	msSQLColumn struct {
+		name string
+		typ  string
+	}
+)
+
+func (c *Client) getTableColumns(ctx context.Context, tableName string) (*msSQLTableInfo, error) {
+	tc := msSQLTableInfo{
+		name: tableName,
+	}
+
+	const sqlSelectColumnTypes = `select column_name, data_type from information_schema.columns
+where table_name = $tableName
+order by ordinal_position asc`
+	rows, err := c.db.QueryContext(ctx, sqlSelectColumnTypes, sql.Named("tableName", tableName))
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	for rows.NextResultSet() {
+		for rows.Next() {
+			var name string
+			var typ string
+			if err := rows.Scan(&name, &typ); err != nil {
+				return nil, err
+			}
+			tc.columns = append(tc.columns, msSQLColumn{
+				name: strings.ToLower(name),
+				typ:  strings.ToLower(typ),
+			})
+		}
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return &tc, nil
 }
