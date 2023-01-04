@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.1.5](https://github.com/cloudquery/cloudquery/compare/plugins-source-heroku-v3.1.4...plugins-source-heroku-v3.1.5) (2023-01-04)
+
+
+### Bug Fixes
+
+* **deps:** Update module github.com/cloudquery/plugin-sdk to v1.17.2 ([#6260](https://github.com/cloudquery/cloudquery/issues/6260)) ([805972a](https://github.com/cloudquery/cloudquery/commit/805972aa67ce54e3358501c6b7ee5d85e5f65cac))
+* **deps:** Update module github.com/cloudquery/plugin-sdk to v1.18.0 ([#6339](https://github.com/cloudquery/cloudquery/issues/6339)) ([158365a](https://github.com/cloudquery/cloudquery/commit/158365a78dfa4389074f716a0f581f18fedc1080))
+
 ## [3.1.4](https://github.com/cloudquery/cloudquery/compare/plugins-source-heroku-v3.1.3...plugins-source-heroku-v3.1.4) (2023-01-03)
 
 
